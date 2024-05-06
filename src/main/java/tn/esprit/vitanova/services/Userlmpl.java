@@ -87,7 +87,7 @@ public class Userlmpl implements UserService {
 
     public void sendEmail(String toEmail, String subject, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("besttrip.esprit1@gmail.com");
+        message.setFrom("baliaynos@gmail.com");
         message.setTo(toEmail);
         message.setSubject(subject);
         message.setText(body);
@@ -256,6 +256,16 @@ public class Userlmpl implements UserService {
         sendEmail(user.getEmail(), "You have been added to a new cluster", "You have been added to cluster " + cluster);
         userRepo.save(user);
     }
+    @Override
+    public List<User> getUsersWithPsychiatristSpecialty() {
+        return userRepo.findByRolesName(ERole.ROLE_PSYCOLOGIST);
+    }
+    @Override
+    public List<User> getUsersWithclientSpecialty() {
+        return userRepo.findByRolesName(ERole.ROLE_CLIENT);
+    }
+
+
 
 
 }

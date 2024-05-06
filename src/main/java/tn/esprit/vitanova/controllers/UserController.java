@@ -122,6 +122,16 @@ public class UserController {
             affectCluster(user.getId());
         }
     }
+    @GetMapping("/psy")
+    public ResponseEntity<List<User>> getUsersWithPsychiatristSpecialty() {
+        List<User> psychiatrists = userService.getUsersWithPsychiatristSpecialty();
+        return ResponseEntity.ok(psychiatrists);
+    }
+    @GetMapping("/client")
+    public ResponseEntity<List<User>> getUsersWithclientSpecialty() {
+        List<User> psychiatrists = userService.getUsersWithclientSpecialty();
+        return ResponseEntity.ok(psychiatrists);
+    }
 
 }
 

@@ -35,4 +35,6 @@ public interface UserService {
     String getCluster(Integer age, Integer annualIncome, Integer spendingScore, Integer male, Integer female);
 
     void affectCluster(long idUser);
+    public List<User> getUsersWithPsychiatristSpecialty();
+    public List<User> getUsersWithclientSpecialty();
 }
