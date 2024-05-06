@@ -105,7 +105,7 @@ public class ProductService implements IProductservice{
             throw new IllegalArgumentException("Invalid product ID or insufficient quantity.");
         }
     }
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 3000)
     @Override
     public void checkQuantity() {
         List<Products> products = productRepo.findAll();
@@ -122,7 +122,7 @@ public class ProductService implements IProductservice{
     }
 
     @Override
-    @Scheduled(fixedRate = 60000)
+    @Scheduled(fixedRate = 3000)
     public void checkAndNotifyQuantity() {
         List<Products> products = productRepo.findAll();
         for (Products product : products) {
