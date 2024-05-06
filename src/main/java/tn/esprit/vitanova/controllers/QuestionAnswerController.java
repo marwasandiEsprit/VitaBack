@@ -22,4 +22,18 @@ public class QuestionAnswerController {
     public List<QuestionAnswer> chercherTousQuestions(){
         return iQuestionAnswerService.getAllQuestions();
     }
+
+    @PutMapping("/updatequestion/{questionsid}")
+    public void updateQuestionAnswer(@PathVariable Long questionsid,@RequestBody QuestionAnswer q){
+        iQuestionAnswerService.updateQuestionAnswer(questionsid,q);
+    }
+    @GetMapping("/getquestionbyid/{questionsid}")
+    public QuestionAnswer getQuestionAnswerId(@PathVariable Long questionsid){
+        return iQuestionAnswerService.getQuestionAnswerbyId(questionsid);
+    }
+
+    @DeleteMapping("/deletequestion/{questionsid}")
+    public  void  supprimerQuestionAnswer(@PathVariable Long questionsid) {
+        iQuestionAnswerService.supprimerQuestionAnswer(questionsid);
+    }
 }

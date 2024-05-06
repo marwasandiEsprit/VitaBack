@@ -23,9 +23,10 @@ public class QuotesController {
         iQuoatesService.updateQuoate(idQuotes,q);
     }
     @GetMapping("/getquotebyid/{idQuotes}")
-    public Quotes getquoteId(Long idQuotes){
+    public Quotes getquoteId(@PathVariable Long idQuotes){
         return iQuoatesService.getQuotebyId(idQuotes);
     }
+
     @GetMapping("/getallquotes")
     public List<Quotes> chercherTousQuotes(){
         return iQuoatesService.chercherTousQuotes();

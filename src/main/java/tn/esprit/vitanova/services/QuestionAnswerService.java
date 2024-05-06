@@ -22,4 +22,25 @@ public class QuestionAnswerService implements IQuestionAnswerService{
     public List<QuestionAnswer> getAllQuestions() {
         return answerRepo.findAll();
     }
+
+
+    @Override
+    public void updateQuestionAnswer(Long questionsid, QuestionAnswer q) {
+        q.setQuestionsid(questionsid);
+        answerRepo.save(q);
+    }
+
+    @Override
+    public QuestionAnswer getQuestionAnswerbyId(Long questionsid) {
+        if (questionsid == null) {
+            // Handle the case where ID is null, e.g., throw an exception or return null
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        return answerRepo.findById(questionsid).orElse(null);
+    }
+
+    @Override
+    public void supprimerQuestionAnswer(Long questionsid) {
+        answerRepo.deleteById(questionsid);
+    }
 }

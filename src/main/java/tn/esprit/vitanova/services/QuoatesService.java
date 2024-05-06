@@ -27,7 +27,12 @@ public class QuoatesService implements IQuoatesService{
 
     @Override
     public Quotes getQuotebyId(Long idQuotes) {
-        return quotesRepo.findById(idQuotes).get();
+        if (idQuotes == null) {
+            // Handle the case where ID is null, e.g., throw an exception or return null
+            throw new IllegalArgumentException("ID cannot be null");
+        }
+        return quotesRepo.findById(idQuotes).orElse(null);
+
     }
 
     @Override
