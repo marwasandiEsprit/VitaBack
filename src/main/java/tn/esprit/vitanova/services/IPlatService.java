@@ -4,6 +4,7 @@ import tn.esprit.vitanova.entities.Plat;
 import tn.esprit.vitanova.entities.PlatConseils;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IPlatService {
     public Plat ajouterPlat (Plat plat);
@@ -12,4 +13,6 @@ public interface IPlatService {
     public Plat getPlatbyId (Long idPlat);
     public List<Plat> chercherTousPlat();
     public void supprimerPlat (Long idPlat);
+    Map<Long, Long> countPlatesPerUser();
+
 }

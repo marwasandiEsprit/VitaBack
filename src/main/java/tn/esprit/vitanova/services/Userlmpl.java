@@ -265,7 +265,11 @@ public class Userlmpl implements UserService {
         return userRepo.findByRolesName(ERole.ROLE_CLIENT);
     }
 
+    @Override
+    public List<User> getUsersWithNutritionnisteSpecialty() {
+        return userRepo.findAllByRolesName(ERole.ROLE_NUTRITOINISTE);
 
+    }
 
 
 }

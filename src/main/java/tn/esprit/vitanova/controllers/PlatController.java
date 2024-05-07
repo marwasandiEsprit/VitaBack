@@ -1,15 +1,18 @@
 package tn.esprit.vitanova.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.vitanova.Dto.AddedPlat;
 import tn.esprit.vitanova.Dto.PlatQuantite;
 import tn.esprit.vitanova.Dto.PlatsQauntites;
 import tn.esprit.vitanova.entities.Plat;
 import tn.esprit.vitanova.entities.PlatConseils;
+import tn.esprit.vitanova.entities.User;
 import tn.esprit.vitanova.services.PlatService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -56,6 +59,28 @@ public class PlatController {
             }
         }
         return totalCalories;
+    }
+
+    @GetMapping("/count/byCreator/{creatorId}")
+    public ResponseEntity<Long> countPlatsByCreator(@PathVariable Long creatorId) {
+        long count = platService.countPlatsCreatedByUser(creatorId);
+        return ResponseEntity.ok(count);
+    }
+    @GetMapping("/creator/{platId}")
+    public ResponseEntity<User> findCreatorOfPlat(@PathVariable Long platId) {
+        User creator = platService.findCreatorOfPlat(platId);
+        if (creator!= null) {
+            return ResponseEntity.ok(creator);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @GetMapping("/platesbyusers")
+    public ResponseEntity<Map<Long, Long>> getPlatesPerUser() {
+        Map<Long, Long> platesPerUser = platService.countPlatesPerUser();
+        return ResponseEntity.ok(platesPerUser);
     }
 
 }

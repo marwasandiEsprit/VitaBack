@@ -42,5 +42,15 @@ public interface Allservicesimpl {
                                         // char specializeRelationship, char specializeAnxiety);
 
     public List<Consultation> getConsultationsByUserId(Long userId) ;
+
+    RapportNutr ajouterrapportnutritionniste(RapportNutr rapportNutr);
+
+    void updateprapportnutritionniste(Long idRapportNutr, RapportNutr rapport);
+
+    RapportNutr getrapportnutritionnistebyId(Long idRapportNutr);
+
+    List<RapportNutr> chercherTousrapportnut();
+
+    void supprimerrapportnutritionniste(Long idRapportNutr);
 }
 

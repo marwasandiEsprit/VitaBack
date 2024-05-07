@@ -23,6 +23,8 @@ import java.util.Objects;
 public class UserController {
     private UserService userService;
 
+    private UserRepo userRepo;
+
     @GetMapping("/getAll")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
@@ -132,6 +134,13 @@ public class UserController {
         List<User> psychiatrists = userService.getUsersWithclientSpecialty();
         return ResponseEntity.ok(psychiatrists);
     }
+
+    @GetMapping("/Nutre")
+    public ResponseEntity<List<User>> getUsersWithNutritionnisteSpecialty() {
+        List<User> nutritionniste = userService.getUsersWithNutritionnisteSpecialty();
+        return ResponseEntity.ok(nutritionniste);
+    }
+
 
 }
 

@@ -1,6 +1,7 @@
 package tn.esprit.vitanova.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -102,9 +103,16 @@ public class User implements Serializable{
     @OneToMany(mappedBy = "psychiatrist", cascade = CascadeType.ALL)
     private List<RapportPsy> psychiatristReports;
 
+    @OneToMany(mappedBy = "nutristionist", cascade = CascadeType.ALL)
+    private List<RapportNutr> nutrs;
     // Association with client report (one-to-one)
     @OneToOne(mappedBy = "clients")
     private RapportPsy clientReport;
+
+    // Association with client report (one-to-one)
+
+
+
 
 
     ////relation product

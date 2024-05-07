@@ -37,4 +37,6 @@ public interface UserService {
     void affectCluster(long idUser);
     public List<User> getUsersWithPsychiatristSpecialty();
     public List<User> getUsersWithclientSpecialty();
+
+    List<User> getUsersWithNutritionnisteSpecialty();
 }

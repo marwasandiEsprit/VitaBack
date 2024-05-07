@@ -20,6 +20,7 @@ public class Plat {
     private String Name ;
     private float  Quantity;
     private float  nbCalories ;
+    private Long creatorId;
     @OneToMany(mappedBy = "plat", cascade = CascadeType.ALL)
     public List<PlatConseils> platConseils;
 }

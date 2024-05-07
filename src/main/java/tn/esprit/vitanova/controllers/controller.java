@@ -240,6 +240,32 @@ public ResponseEntity<Map<String, Long>> getConsultationCountPerClientForPsychia
         return ResponseEntity.ok(totalConsultationsPerPsychiatrist);
     }
 
+    @PostMapping("/rapportnutr/addrapportnutritionniste")
+    public RapportNutr ajouterRapportNutritionniste(@RequestBody RapportNutr rapportNutr) {
+        return allservices.ajouterrapportnutritionniste(rapportNutr);
+    }
+
+    @PutMapping("/rapportnutr/updaterapportnutritionniste/{idRapportNutr}")
+    public void updateRapportNutritionniste(@PathVariable Long idRapportNutr, @RequestBody RapportNutr rapport) {
+        allservices.updateprapportnutritionniste(idRapportNutr, rapport);
+    }
+
+    @GetMapping("/rapportnutr/getrapportnutritionnisteById/{idRapportNutr}")
+    public RapportNutr getRapportNutritionnisteById(@PathVariable Long idRapportNutr) {
+        return allservices.getrapportnutritionnistebyId(idRapportNutr);
+    }
+
+    @GetMapping("/rapportnutr/getAll")
+    public List<RapportNutr> chercherTousRapportNutritionniste() {
+        return allservices.chercherTousrapportnut();
+    }
+
+    @DeleteMapping("/rapportnutr/deleterapportnutritionniste/{idRapportNutr}")
+    public void supprimerRapportNutritionniste(@PathVariable Long idRapportNutr) {
+        allservices.supprimerrapportnutritionniste(idRapportNutr);
+    }
+
+
 }
 
 

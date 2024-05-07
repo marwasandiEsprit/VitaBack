@@ -1,6 +1,7 @@
 package tn.esprit.vitanova.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -10,6 +11,7 @@ import tn.esprit.vitanova.entities.ChatRoom;
 import tn.esprit.vitanova.services.ChatRoomService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -45,5 +47,9 @@ ChatRoomService chatRoomService ;
 //    you
         return chatMessage;
     }
-
+    @GetMapping("/countClientsPerNutritionist")
+    public ResponseEntity<Map<Long, Long>> countClientsPerNutritionist() {
+        Map<Long, Long> clientsPerNutritionist = chatRoomService.countClientsPerNutritionist();
+        return ResponseEntity.ok(clientsPerNutritionist);
+    }
 }

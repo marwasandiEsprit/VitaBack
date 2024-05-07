@@ -20,8 +20,7 @@ public class RapportPhy implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idRapportPhy")
     private Long idRapportPhy; // Clé primaire
-    private Long OwnerId;
-    private Long idPatient;
+
     private String description;
     @Temporal(TemporalType.DATE)
     private Date dateRappPh;

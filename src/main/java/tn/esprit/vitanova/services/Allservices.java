@@ -36,6 +36,8 @@ public class Allservices implements Allservicesimpl{
 
    UserRepo userRepository;
    FeedbackRepo fp;
+    RapportNutriRepo rnp;
+
 
     @Override
     public Psychologue ajouterPsychologue(Psychologue p) {
@@ -495,6 +497,34 @@ public class Allservices implements Allservicesimpl{
     public long countConsultationsWithinLast24Hours() {
         LocalDate twentyFourHoursAgo = LocalDate.now().minusDays(1);
         return cr.countByConsultationdateAfter(twentyFourHoursAgo);
+    }
+
+    @Override
+    public RapportNutr ajouterrapportnutritionniste(RapportNutr rapportNutr) {
+        return rnp.save(rapportNutr);
+    }
+
+    @Override
+    public void updateprapportnutritionniste(Long idRapportNutr, RapportNutr rapport) {
+        rapport.setIdRapportNutr(idRapportNutr);
+        rnp.save(rapport);
+
+    }
+
+    @Override
+    public RapportNutr getrapportnutritionnistebyId(Long idRapportNutr) {
+        return rnp.findById(idRapportNutr).orElse(null);
+    }
+
+    @Override
+    public List<RapportNutr> chercherTousrapportnut() {
+        return rnp.findAll();
+    }
+
+    @Override
+    public void supprimerrapportnutritionniste(Long idRapportNutr) {
+        rapportPsyRepo.deleteById(idRapportNutr);
+
     }
 //    public List<Consultation>getshit(Long id){
 //        List<Consultation> consultations = cr.findByPsychiatristId(id);
