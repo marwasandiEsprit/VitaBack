@@ -1,5 +1,6 @@
 package tn.esprit.vitanova.services;
 
+import tn.esprit.vitanova.entities.ERole;
 import tn.esprit.vitanova.entities.User;
 
 import java.util.List;
@@ -39,4 +40,6 @@ public interface UserService {
     public List<User> getUsersWithclientSpecialty();
 
     List<User> getUsersWithNutritionnisteSpecialty();
+
+    List<User> findByRolesName(ERole roleName);
 }

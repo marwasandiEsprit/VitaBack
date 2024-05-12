@@ -271,5 +271,10 @@ public class Userlmpl implements UserService {
 
     }
 
+    @Override
+    public List<User> findByRolesName(ERole roleName) {
+        return userRepo.findByRolesName(roleName) ;
+    }
+
 
 }

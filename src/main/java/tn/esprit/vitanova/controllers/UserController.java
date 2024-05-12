@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import tn.esprit.vitanova.entities.ERole;
 import tn.esprit.vitanova.entities.User;
 import tn.esprit.vitanova.repository.UserRepo;
 import tn.esprit.vitanova.services.AuthService;
@@ -141,6 +142,11 @@ public class UserController {
         return ResponseEntity.ok(nutritionniste);
     }
 
+    @GetMapping("/findByRolesName/{role}")
+    public ResponseEntity<List<User>> findByRolesName(@PathVariable ERole role) {
+        List<User> users = userService.findByRolesName(role);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
 }
 
